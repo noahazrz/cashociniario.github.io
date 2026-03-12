@@ -1,0 +1,54 @@
+.topnav {
+  color: rgb(135, 135, 177);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+}
+
+.topnav input[type=text] {
+  width: 300px;
+  padding: 6px;
+  border: none;
+  font-size: 17px;
+}
+
+body {
+  position: relative;
+  padding: 25px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  background-image: url("images/favicon1.png");
+  background-repeat: repeat;
+  background-size: 30px 30px;   /* image size */
+  background-position: 25px 25px; /* offset to add visual spacing */
+  transform: rotate(30deg);
+  z-index: -1;
+}
+
+.topnav h1 {
+  color: rgb(197, 197, 235); /* The inside color of the letters */
+  -webkit-text-stroke: 1px white; /* The width and color of the outline */
+  font-size: 100px;
+  
+  /* Remove the previous box border */
+  border: none; 
+  padding: 0;
+}
+
+#definition-container {
+  margin-top: 20px;
+  color: white; /* Matches your outline theme */
+  text-align: center;
+  max-width: 80%;
+}
+
+#display-word {
+  color: rgb(162, 162, 197);
+  -webkit-text-stroke: 1px white;
+  font-size: 32px;
+}
