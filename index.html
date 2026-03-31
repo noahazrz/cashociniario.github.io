@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cashociniario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Georgia&display=swap" rel="stylesheet">
+  <!-- In your real project, replace this <style> block with: <link rel="stylesheet" href="asd.css"> -->
+  <link rel="stylesheet" href="asd.css">
+  <link rel="icon" href="images/512.png">
+  <script src="dictionary.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ── GEMINI BOX (left) ── -->
+  <div id="gemini-box" class="card">
+    <div class="panel-label">✨ Pregúntale a Gemini</div>
+    <textarea id="gemini-input" placeholder="Escribe tu pregunta sobre el diccionario…"></textarea>
+    <button id="gemini-btn" onclick="askGemini && askGemini()">
+      <span>⚡</span> Enviar
+    </button>
+    <hr class="gemini-divider">
+    <div id="gemini-output" class="wod-meaning"></div>
+  </div>
+
+  <!-- ── TOPNAV / SEARCH (center) ── -->
+  <div class="topnav">
+    <div class="brand">
+      <h1>Cashociniario</h1>
+      <h6>BETA v1.3</h6>
+    </div>
+
+    <div class="search-wrapper">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="wordSearch" list="sugerencias" placeholder="Escribe una palabra…" autocomplete="off">
+      <datalist id="sugerencias"></datalist>
+    </div>
+
+    <div id="results">
+      <!-- JS will inject display-word & display-meaning; placeholder shown when empty -->
+      <h2 id="display-word"></h2>
+      <p  id="display-meaning"></p>
+      <div class="results-placeholder" id="results-placeholder">
+        <span class="ph-icon">📖</span>
+        <span>Busca una palabra para ver su significado</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WORD OF THE DAY (right) ── -->
+  <div id="word-of-day" class="card">
+    <div class="wod-label">✦ Cachipalabra del día</div>
+    <div class="wod-word"   id="wod-word">—</div>
+    <div class="wod-meaning" id="wod-meaning">Cargando…</div>
+    <div class="wod-timer"  id="wod-timer"></div>
+  </div>
+
+</div>
+
+<script>
+  // Hide placeholder when JS populates display-word
+  const dw  = document.getElementById('display-word');
+  const ph  = document.getElementById('results-placeholder');
+  const obs = new MutationObserver(() => {
+    ph.style.display = dw.textContent.trim() ? 'none' : 'flex';
+  });
+  obs.observe(dw, { childList: true, characterData: true, subtree: true });
+</script>
+
+</body>
+</html>
