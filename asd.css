@@ -228,6 +228,7 @@
       font-size: 17px;
       color: var(--text-dim);
       pointer-events: none;
+      z-index: 1; /* 👈 add this */
     }
 
     #wordSearch {
